@@ -49,7 +49,11 @@ int main() {
         cv::Mat K, dist;
 
         makeApproxCameraMatrix(w, h, K, dist);
+        
+        std::vector<int> ids;
+        std::vector<std::vector<cv::Point2f>> corners;
 
+        cv::aruco::detectMarkers(frame, dict, corners, ids, params)
         
 
 
