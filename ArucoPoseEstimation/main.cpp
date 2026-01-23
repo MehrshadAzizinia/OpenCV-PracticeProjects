@@ -2,10 +2,18 @@
 #include <opencv2/aruco.hpp>
 #include <iostream>
 
-static void makeApproxCameraMatrix(){
+static void makeApproxCameraMatrix(int w, int h, cv::Mat &K, cv::Mat &dist){
+    // estmating camera intrinsic matrix, will work on proper calibration later
 
+    double fx = 0.9 * w;
+    double fy = 0.9 * w;
+    double cx = w/2.0;
+    double cy = h/2.0;
 
-
+    K = (cv::Mat_<double>(3,3) << fx, 0, cx, 
+                                  0,  fy, cy, 
+                                  0, 0, 1); 
+    dist = cv::Mat::zeros(1, 5, CV_64F);
 
 }
 
